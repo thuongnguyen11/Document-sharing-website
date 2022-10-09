@@ -1,0 +1,16 @@
+.bg-header {
+    background-image: linear-gradient(to right, #0F3443 ,#34E89E);
+}
+
+.nav {
+    @apply flex justify-between px-20 h-14 ;
+    
+}
+
+.upload {
+    @apply px-2 py-1 border-2 border-white flex items-center gap-1 rounded-md;
+}
+
+li {
+    @apply text-white font-semibold px-4;
+}
