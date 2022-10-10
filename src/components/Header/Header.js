@@ -10,8 +10,8 @@ import logo from '../../assets/logo.png'
 export default function Header() {
     return (
         <nav className="bg-header nav shadow-md ">
-            <div className="text-white font-semibold flex items-center">
-                <Link to="/home" className="text-xl flex items-center">
+            <div className="text-white font-extrabold flex items-center">
+                <Link to="/" className="text-xl flex items-center">
                     KH <img src={logo} alt="logo" width={28} height={28} className="mr-1" /> TÀI LIỆU UIT</Link>
 
             </div>

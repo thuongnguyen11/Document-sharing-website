@@ -21,7 +21,7 @@ export default function App() {
         <Routes>
           <Route exact path="/sign-in" element={<SignIn />} />
           <Route exact path="/sign-up" element={<SignUp />} />
-          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route exact path="/upload" element={<Upload />} />
 
         </Routes>
