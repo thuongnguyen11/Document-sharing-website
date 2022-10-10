@@ -1,0 +1,16 @@
+.background {
+    position: absolute;
+    background: url("../../assets/background.jpg") no-repeat;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 400px ;
+    z-index: -10;
+    background-size: cover;
+    background-position: center;
+}
+
+.title {
+    @apply text-white text-4xl font-light text-center mt-14;
+}
