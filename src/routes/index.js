@@ -9,6 +9,7 @@ import Upload from "../pages/Upload/Upload"
 const publicRoutes = []
 // Private Routes
 const privateRoutes = [
+    { path: '/', component: Home},
     { path: '/home', component: Home},
     { path: '/sign-in', component: SignIn},
     { path: '/sign-up', component: SignUp},

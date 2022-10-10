@@ -33,11 +33,16 @@ export default function App() {
 
     <Router>
         <Routes>
-          <Route exact path="/sign-in" element={<SignIn />} />
-          <Route exact path="/sign-up" element={<SignUp />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/upload" element={<Upload />} />
-
+        {
+          privateRoutes.map((route, index)=> {
+            const Page = route.component
+            let Layout = Default_Layout
+            return <Route key={index} path={route.path} element={
+              <Layout>
+                  <Page />
+              </Layout>} /> 
+          })
+        }
         </Routes>
     </Router>
   );
