@@ -2,6 +2,7 @@
     position: relative;
     height: 370px;
 }
+
 .background {
     position: absolute;
     background: url("../../assets/background.jpg") no-repeat;
@@ -24,28 +25,36 @@
     height: 370px;
     background-color: rgba(47, 54, 54, 0.3)
 }
+
 .slogan {
     @apply text-4xl font-light text-center pt-20;
     color: #fff;
 }
 
-
-
-.item {
-    @apply text-gray-900 p-0 pb-3;
-    color: #0B7C4D;
-    border-color: #c4c4c4;
+.container {
+    @apply list-none pl-0 pr-5 pb-5 text-gray-900 w-1/4;
 }
 
-.article {
-    @apply px-12 w-5/6 pt-10;
+.subject-item {
+    @apply  rounded-lg px-7 py-5 h-32 flex justify-center items-center relative;
+    transition: .2s ease-out;
 }
 
-.new-doc {
-    @apply text-2xl font-extrabold pb-5;
+.subject-item:hover {
+    box-shadow: 0 10px 20px rgb(0 0 0 / 9%), 0 6px 6px rgb(0 0 0 / 12%);
 }
 
+.image {
+    @apply absolute h-32 w-full rounded-lg;
+    /* filter: opacity(0.6); */
+}
 
-
-
+.item-bg {
+    position: absolute;
+    top:-2;
+    left: 0;
+    right: 0;
+    @apply h-32 w-full rounded-lg;
+    background-color:  rgba(47, 54, 54, 0.4)
+}
 

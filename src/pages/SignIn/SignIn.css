@@ -43,8 +43,8 @@
   font-size: 12px;
 }
 
-.title {
-  @apply text-2xl mb-10 font-bold;
+.title_signin {
+  @apply text-2xl mb-10 font-bold text-gray-900;
   
 }
 

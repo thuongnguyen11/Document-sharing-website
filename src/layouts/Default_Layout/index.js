@@ -1,4 +1,5 @@
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import './Default_Layout.css'
 
 function Default_Layout(props) {
@@ -12,6 +13,9 @@ function Default_Layout(props) {
                                 {props.children}
                         </div>
                 </div>
+                <div className='df-footer'>
+                        <Footer />
+                </div >
         </div>
      );
 }

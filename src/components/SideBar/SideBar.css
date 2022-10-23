@@ -1,0 +1,5 @@
+.side-bar {
+    @apply border-2 p-5 w-1/6;
+    box-shadow: 3px 3px #c4c4c4;
+    
+}

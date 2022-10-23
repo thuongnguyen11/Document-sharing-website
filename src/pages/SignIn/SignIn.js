@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import {
   Link
 } from "react-router-dom";
 
 import './SignIn.css';
+import { useAuth } from '../../hooks/useAuth';
 
 function SignIn() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { login } = useAuth();
 
   const database = [
     {
-      email: "user1",
-      password: "pass1"
+      email: "admin",
+      password: "admin"
     },
     {
       email: "user2",
@@ -43,6 +44,10 @@ function SignIn() {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
+        login({
+          email: email.value,
+          password: pass.value
+        });
       }
     } else {
       // Username not found
@@ -91,7 +96,7 @@ function SignIn() {
 
   return (
     <div className="login">
-      <div className="title">ĐĂNG NHẬP</div>
+      <div className="title_signin">ĐĂNG NHẬP</div>
       <div className="login-form">
         {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
       </div>

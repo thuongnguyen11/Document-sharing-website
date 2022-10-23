@@ -7,13 +7,18 @@ import {
 } from "react-router-dom";
 import Default_Layout from './layouts/Default_Layout';
 import { privateRoutes, publicRoutes } from './routes';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from "./components/Header/Header";
-import SearchBar from "./components/Search/Search";
+import SearchBar from "./components/SearchBar/SearchBar";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Upload from "./pages/Upload/Upload";
 import Home from "./pages/Home/Home";
+import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
+import { AuthProvider } from "./hooks/useAuth";
 
 
 export default function App() {
@@ -32,18 +37,46 @@ export default function App() {
     // </Router>
 
     <Router>
+      <AuthProvider>
         <Routes>
-        {
-          privateRoutes.map((route, index)=> {
+          {privateRoutes.map((route, index) => {
             const Page = route.component
             let Layout = Default_Layout
             return <Route key={index} path={route.path} element={
-              <Layout>
+              <PrivateRoute>
+                <Layout>
                   <Page />
-              </Layout>} /> 
-          })
-        }
+                </Layout>
+              </PrivateRoute>}
+            />
+          })}
+
+          {
+            publicRoutes.map((route, index) => {
+              const Page = route.component
+              let Layout = Default_Layout
+              return <Route key={index} path={route.path} element={
+                <PublicRoute>
+                  <Layout>
+                    <Page />
+                  </Layout>
+                </PublicRoute>
+              } />
+            })
+          }
         </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </AuthProvider>
     </Router>
   );
 }

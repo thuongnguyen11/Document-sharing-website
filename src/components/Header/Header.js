@@ -7,7 +7,29 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import './Header.css';
 import logo from '../../assets/logo.png'
+import { useAuth } from "../../hooks/useAuth";
+
 export default function Header() {
+    const { user, logout } = useAuth();
+
+    const authSection = user
+        ? <>
+            <li>
+                <div>{user.email}</div>
+            </li>
+            <li>
+                <button onClick={logout}>Đăng xuất</button>
+            </li>
+        </>
+        : <>
+            <li>
+                <Link to="/sign-in">Đăng nhập</Link>
+            </li>
+            <li className="border-l-2">
+                <Link to="/sign-up">Đăng ký</Link>
+            </li>
+        </>
+
     return (
         <nav className="bg-header nav shadow-md ">
             <div className="text-white font-extrabold flex items-center">
@@ -28,12 +50,9 @@ export default function Header() {
                     </Link>
 
                 </li>
-                <li>
-                    <Link to="/sign-in">Đăng nhập</Link>
-                </li>
-                <li className="border-l-2">
-                    <Link to="/sign-up">Đăng ký</Link>
-                </li>
+
+                {authSection}
+
             </ul>
         </nav>
     );
