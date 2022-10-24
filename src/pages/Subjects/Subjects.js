@@ -15,7 +15,6 @@ function Subjects() {
     let location = useLocation();
     let { departmentId } = useParams();
     const listSubject = subjects.filter((subject) => subject.departmentId === departmentId);
-
     useEffect(() => {
         const category = location.pathname.split('/').reverse()[0];
         const subject = subjects.filter((subject) => subject.departmentId === category);

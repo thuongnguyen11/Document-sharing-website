@@ -46,6 +46,34 @@
 }
 
 
+.new-doc-container {
+    @apply list-none pl-0 pr-5 pb-5 text-gray-900 w-1/4;
+}
+
+.new-doc-item {
+    @apply  rounded-lg px-7 py-5 h-32 flex justify-center items-center relative;
+    transition: .2s ease-out;
+}
+
+.new-doc-item:hover {
+    box-shadow: 0 10px 20px rgb(0 0 0 / 9%), 0 6px 6px rgb(0 0 0 / 12%);
+}
+
+.image {
+    @apply absolute h-32 w-full rounded-lg;
+    /* filter: opacity(0.6); */
+}
+
+.new-doc-item-bg {
+    position: absolute;
+    top:-2;
+    left: 0;
+    right: 0;
+    @apply h-32 w-full rounded-lg;
+    background-color:  rgba(47, 54, 54, 0.4)
+}
+
+
 
 
 

@@ -1,29 +1,29 @@
-.background-header-subject {
-    position: relative;
-    height: 230px;
+.bg-subject {
+    @apply  flex justify-center items-center relative;
+    height: 250px;
+
 }
-.background-subject {
-    position: absolute;
-    background: url("../../assets/background.jpg") no-repeat;
+
+.bg-subj {
+    @apply w-full absolute;
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
-    height: 230px;
-    z-index: -10;
-    background-size: cover;
-    background-position: center;
-}
+    height: 250px;
 
-.background-subject::after {
-    content: "";
-    position: absolute;
+    
+}
+.bg-subject-blur {
+    @apply w-full absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 230px;
-    background-color: rgba(47, 54, 54, 0.3)
+    right: 0;
+    height: 250px;
+    background-color:  rgba(47, 54, 54, 0.5)
+
 }
+
+
 .title {
     @apply flex justify-center items-center;
     height: 230px;
@@ -33,7 +33,28 @@
     color: #fff;
 }
 
-ul, li {
-    color: red;
+
+
+.article {
+    @apply px-12 w-5/6 pt-10;
+}
+
+.new-doc {
+    @apply text-2xl font-extrabold pb-5;
+}
+
+.doc-items {
+    @apply mt-7 p-5;
+    border: 1px solid transparent;
+    background-color: #F0FFD8;
+    box-shadow: 1px 1px 1px 1px #c4c4c4;
+    
+}
+
+.doc-item {
+    @apply text-white py-2 px-3 flex justify-between;
+    background-color: #0B7C4D;
+    margin-top: 2px;
+    font-size: 14px;
 }
 
