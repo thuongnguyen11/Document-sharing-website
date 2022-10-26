@@ -1,16 +1,17 @@
+// Libraries
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
+import * as _ from 'lodash';
+// Components
 import SideBar from "../../components/SideBar/SideBar";
 import './Documents.css';
 import { documentTypes } from "../../Data";
 import { documents } from "../../Data";
 import { subjects } from "../../Data";
-import { useLocation } from "react-router-dom";
-
-import * as _ from 'lodash';
 
 function Documents() {
+    console.log(`window.location.href: ${window.location.href}`)
     let location = useLocation();
     let { subjectId } = useParams();
 
@@ -70,6 +71,7 @@ function Documents() {
 
             <section className="flex" >
                 <SideBar />
+                
                 <div className="article">
                     <div className="new-doc"></div>
                     {listGroup}
