@@ -1,15 +1,16 @@
+// Libraries
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from 'react-toastify';
-
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+// Components
+//Data
 import { subjects } from "../../Data";
 import { documentTypes } from "../../Data";
-
-
 import './Upload.css';
-import FileUploadIcon from '@mui/icons-material/FileUpload';
-
+import { documentType } from "../../data/document";
+import axios from "axios";
 
 
 class Thumb extends React.Component {
@@ -89,18 +90,59 @@ function Upload() {
         }
     }, [formik.values.subjectId])
 
-
+    //  Fetch Data
+    const [bioSubject, setBioSubject] = useState([]);
+    useEffect(() => {
+        const fetchDataSubject = async () => {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/subjects/`);
+            const data = await response.json()
+            setBioSubject(data);  
+        };  
+        fetchDataSubject();
+    }, []);
+    const [bioMajor, setBioMajor] = useState([]);
+    useEffect(() => {
+        const fetchDataMajor = async () => {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/majors/`);
+            const data = await response.json()
+            setBioMajor(data);  
+        };  
+        fetchDataMajor();
+    }, []);
 
     return (
-        <form className="upload-file" onSubmit={formik.handleSubmit}>
+        <div>
+            <form className="upload-file" 
+            // onSubmit={formik.handleSubmit} 
+            onSubmit={() => {
+                let params = {}
+                params.name = document.getElementById('txtTenTaiLieu').value;
+                params.description = 'none';
+                params.link = 'https://google.com';
+                params.date = '28/10/2022';
+                params.size = '999Kb';
+                params.subjectID = document.getElementById('slt_Subject').value;
+                params.userID = 1;
+                params.status = 1;
+                params.type = document.getElementById('sltLoaiTaiLieu').value;
+                params.imgUrl = 'https://phothongcaodang.fpt.edu.vn/wp-content/uploads/1-15.png'
+                console.log(params)
+                // return false
+                // axios
+                //     .post(`${process.env.REACT_APP_API_URL}/majors/`, item)
+                //     .then((res) => this.refreshList());
+            }} 
+            onChange={() => {document.getElementById('majorList').value=bioMajor[bioSubject[document.getElementById('slt_Subject').value-1]?.majorID-1]?.name;}}
+        >
             <label className="upload_label">
                 Tên tài liệu
-            </label>
+            </label>    
             <input
                 className="upload_input"
                 name="fileName"
                 onChange={formik.handleChange}
                 type="text"
+                id ='txtTenTaiLieu'
                 onBlur={formik.handleBlur}
                 placeholder="Lập trình ứng dụng web"
             />
@@ -111,13 +153,13 @@ function Upload() {
             <label className="upload_label">
                 Loại tài liệu
             </label>
-            <select defaultValue={null} className="upload_input" name="docType"
+            <select defaultValue={null} className="upload_input" name="docType" id='sltLoaiTaiLieu'
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}>
                 <option value={''}>Chọn loại tài liệu</option>
 
                 {
-                    documentTypes ? documentTypes.map(doc_type => {
+                    documentType ? documentType.map(doc_type => {
                         return (
                             <option value={doc_type.id} key={doc_type.id}>{doc_type.name}</option>
                         )
@@ -132,13 +174,20 @@ function Upload() {
             <label className="upload_label">
                 Môn học
             </label>
-            <select defaultValue={null} className="upload_input" name="subjectId"
+            <select defaultValue={null} className="upload_input" name="subjectId" id="slt_Subject"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}>
                 <option value={''}>Chọn môn học</option>
 
                 {
-                    subjects ? subjects.map(subject => {
+                    // subjects ? subjects.map(subject => {
+                    //     return (
+                    //         <option value={subject.id} key={subject.id}>{subject.name}</option>
+                    //     )
+
+                    // }) : <></>
+
+                    bioSubject ? bioSubject.map(subject => {
                         return (
                             <option value={subject.id} key={subject.id}>{subject.name}</option>
                         )
@@ -156,10 +205,11 @@ function Upload() {
                 type="text"
                 name="category"
                 className="upload_input"
+                id="majorList"
                 readOnly
                 placeholder="Hệ thống thông tin"
-                onChange={formik.handleChange}
-                value={formik.values.category}
+                // onChange={formik.handleChange}
+                // value={formik.values.category}
             />
 
             <label className="custom-file-upload">
@@ -192,6 +242,31 @@ function Upload() {
                     disabled={!(formik.isValid && formik.dirty)}
                     className="upload_btn"
                     type="submit"
+                    onClick={() => {
+                        let params = {}
+                        params.name = document.getElementById('txtTenTaiLieu').value;
+                        params.description = 'none';
+                        params.link = 'https://google.com';
+                        params.date = '28/10/2022';
+                        params.size = '999Kb';
+                        params.subjectID = document.getElementById('slt_Subject').value;
+                        params.userID = 1;
+                        params.status = 1;
+                        params.type = document.getElementById('sltLoaiTaiLieu').value;
+                        params.imgUrl = 'https://phothongcaodang.fpt.edu.vn/wp-content/uploads/1-15.png'
+                        console.log(params)
+                        axios
+                                .post(`${process.env.REACT_APP_API_URL}/document/`, params)
+                                .then((res) => {
+                                    console.log('ok roi ne')
+                                    console.log(res)
+                                })
+                                .catch(err => {
+                                    console.log('err')
+                                    console.log(err)
+                                })
+                                ;
+                    }}
                 >
                     Lưu
                 </button>
@@ -204,10 +279,38 @@ function Upload() {
                 </button>
             </div>
         </form>
+        <button
+        onClick={() => {
+            let params = {}
+            params.name = document.getElementById('txtTenTaiLieu').value;
+            params.description = 'none';
+            params.link = 'https://google.com';
+            params.date = '28/10/2022';
+            params.size = '999Kb';
+            params.subjectID = document.getElementById('slt_Subject').value;
+            params.userID = 1;
+            params.status = 1;
+            params.type = document.getElementById('sltLoaiTaiLieu').value;
+            params.imgUrl = 'https://phothongcaodang.fpt.edu.vn/wp-content/uploads/1-15.png'
+            console.log(params)
+            axios
+                    .post(`${process.env.REACT_APP_API_URL}/document/`, params)
+                    .then((res) => {
+                        console.log('ok roi ne')
+                        console.log(res)
+                    })
+                    .catch(err => {
+                        console.log('err')
+                        console.log(err)
+                    })
+                    ;
+        }}
+    >
+sadsadadasdd
+    </button>
+        </div>
     );
 };
 
 
 export default Upload;
-
-
