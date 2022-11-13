@@ -24,6 +24,7 @@ function Documents() {
             const response = await fetch('http://103.75.185.190:4444/documents/');
             const data = await response.json()
             setBioDocument(data);  
+            console.log(data);
         };
         fetchDataDocument();
     }, []);
@@ -31,6 +32,7 @@ function Documents() {
 
     let location = useLocation();
     let { subjectId } = useParams();
+    console.log(subjectId)
 
     const [subject, setSubject] = useState([]);
 

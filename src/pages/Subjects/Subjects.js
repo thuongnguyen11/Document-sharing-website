@@ -1,4 +1,4 @@
-import { Search, TipsAndUpdates } from "@mui/icons-material";
+import { Search } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
