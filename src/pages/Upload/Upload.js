@@ -74,7 +74,7 @@ function Upload() {
         onSubmit: values => {
             //   setLoading(true)
             const { category, file, ...UploadFile } = values;
-            const UploadDoc = { ...UploadFile, description: 'none', link: 'https://google.com', date: '28/10/2022', size: '999Kb', userID: 1, status: 1, imgUrl: 'https://phothongcaodang.fpt.edu.vn/wp-content/uploads/1-15.png' };
+            const UploadDoc = { ...UploadFile, description: 'none', link: 'https://google.com', date: new Date() , size: '999Kb', userID: 1, status: 1, imgUrl: 'https://phothongcaodang.fpt.edu.vn/wp-content/uploads/1-15.png' };
             console.log(UploadDoc);
             axios
                 .post(`${process.env.REACT_APP_API_URL}/document/`, UploadDoc)
@@ -89,7 +89,7 @@ function Upload() {
                 ;
             toast.success('Chờ phê duyệt!');
 
-            // formik.resetForm();
+            formik.resetForm();
         }
     });
 
