@@ -7,7 +7,7 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import './Header.css';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.png';
 import { useAuth } from "../../hooks/useAuth";
 
 export default function Header() {

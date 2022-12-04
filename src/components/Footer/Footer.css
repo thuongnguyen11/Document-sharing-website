@@ -1,0 +1,11 @@
+.title-footer {
+    @apply text-sm;
+    width: 40%;
+}
+.infor-footer {
+    @apply flex;
+}
+
+.title-item {
+    @apply ml-2 font-light italic text-sm;
+}
