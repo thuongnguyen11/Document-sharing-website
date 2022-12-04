@@ -1,0 +1,23 @@
+
+.text-detail{
+    text-decoration: underline;
+    color: #0B7C4D;
+    font-style: italic;
+}
+
+.btn-approval{
+    border: 2px solid #0B7C4D;
+    border-radius: 30px;
+    color: #0B7C4D;
+    padding: 5px 7px 5px 7px;
+    width: 120px;
+    height: 38px;
+    margin: 10px;
+}
+
+.img-item {
+    background-size: 120%;
+    background-repeat: no-repeat;
+    
+}
+

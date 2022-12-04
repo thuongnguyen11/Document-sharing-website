@@ -5,12 +5,14 @@ import SignUp from "../pages/SignUp/SignUp"
 import Upload from "../pages/Upload/Upload"
 import Subjects from "../pages/Subjects/Subjects"
 import Documents from "../pages/Documents/Documents"
+import Approval from "../pages/Approval/Approval"
 
 
 // Public Routes
 const publicRoutes = [
     { path: '/', component: Home},
     { path: '/home', component: Home},
+    { path: '/approval', component: Approval},
     { path: '/sign-in', component: SignIn},
     { path: '/sign-up', component: SignUp},
     { path:  `departments/:departmentId` , component: Subjects},

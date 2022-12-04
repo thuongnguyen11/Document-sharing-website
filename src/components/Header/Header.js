@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import './Header.css';
 import logo from '../../assets/logo.png'
@@ -38,6 +39,11 @@ export default function Header() {
 
             </div>
             <ul className="flex items-center">
+                <li>
+                    <Link to="/approval">
+                        <PendingActionsIcon />
+                    </Link>
+                </li>
                 <li>
                     <Link to="/notification">
                         <NotificationsActiveIcon />
