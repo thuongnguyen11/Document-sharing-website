@@ -15,6 +15,11 @@
     margin: 10px;
 }
 
+.btn-approval:hover {
+    background: #0B7C4D;
+    color: #fff;
+}
+
 .img-item {
     background-size: 120%;
     background-repeat: no-repeat;

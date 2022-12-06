@@ -16,7 +16,7 @@ export default function Header() {
     const authSection = user
         ? <>
             <li>
-                <div>{user.email}</div>
+                <Link to="/user-profile">{user.email}</Link>
             </li>
             <li>
                 <button onClick={logout}>Đăng xuất</button>
@@ -39,11 +39,13 @@ export default function Header() {
 
             </div>
             <ul className="flex items-center">
-                <li>
-                    <Link to="/approval">
-                        <PendingActionsIcon />
-                    </Link>
-                </li>
+                {user?.email === "admin" ?
+                    <li>
+                        <Link to="/approval">
+                            <PendingActionsIcon />
+                        </Link>
+                    </li> : <></>}
+
                 <li>
                     <Link to="/notification">
                         <NotificationsActiveIcon />

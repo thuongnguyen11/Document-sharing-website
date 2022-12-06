@@ -4,9 +4,25 @@ import {
 } from "react-router-dom";
 
 import './Approval.css';
-import { documents } from "../../Data"
+import { documents } from "../../Data";
+import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+
+
 
 function Approval() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    if (user.email !== "admin") {
+      navigate("/", { replace: true });
+    }
+
+    console.log(user.email !== "admin");
+
+  }, [])
 
 
   const renderDocToBeApproved = () => {
